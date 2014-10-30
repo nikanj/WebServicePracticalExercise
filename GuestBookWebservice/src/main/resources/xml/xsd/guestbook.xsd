@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:gbt="http://dss.in.tum.de/guestbooktype" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dss.in.tum.de/guestbook" xmlns:tns="http://dss.in.tum.de/guestbook" elementFormDefault="qualified">
+<xs:import schemaLocation="guestbooktype.xsd" namespace="http://dss.in.tum.de/guestbooktype"/>
+<xs:element name="guestbook">
+	<xs:complexType>
+            <xs:sequence>
+            	<xs:element name="entry" type="gbt:guestbooktype" maxOccurs="unbounded" minOccurs="1"/>
+            </xs:sequence>
+	</xs:complexType>
+	<xs:key name="PK_guestbook_guest_book_id">
+                  <xs:selector xpath="./entry" />
+                  <xs:field xpath="BOOK_ID" />
+    </xs:key>
+    <xs:key name="PK_guestbook_guest_book_name">
+                  <xs:selector xpath="./entry" />
+                  <xs:field xpath="AUTHOR_NAME" />
+    </xs:key> 
+</xs:element>
+</xs:schema>

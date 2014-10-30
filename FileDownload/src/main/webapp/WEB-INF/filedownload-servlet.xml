@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+    <import resource="spring-dao-config.xml" />
+    
+    <!-- Controller beans definition -->
+    <bean id="fileDownloadController" class="de.tum.in.dss.controller.FileDownloadController" >
+		
+		<property name="guestBookDao">
+    		<ref bean="guestBookDao" />
+    	</property>
+    	
+    	<property name="methodNameResolver">
+    		<bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+                <property name="mappings">
+                    <props>
+                        <prop key="/filedownload.app">download</prop>
+                    </props>
+                </property>
+            </bean>
+    	</property>
+    	
+    </bean>
+    
+	 <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+        	<props>
+			  <prop key="/filedownload.app">fileDownloadController</prop>
+			</props>
+        </property>
+     </bean>  
+	
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gb:guestbook xmlns:k="http://dss.in.tum.de/keyword" xmlns:entry="http://dss.in.tum.de/guestbooktype" xmlns:gb="http://dss.in.tum.de/guestbook" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://dss.in.tum.de/guestbook xsd/guestbook.xsd">
+  <gb:entry>
+    <entry:BOOK_ID>1</entry:BOOK_ID>
+    <entry:AUTHOR_TITLE>WscFirst</entry:AUTHOR_TITLE>
+    <entry:AUTHOR_NAME>testoneone</entry:AUTHOR_NAME>
+    <entry:BOOK_DATA>First Entry Into The Wsc Book</entry:BOOK_DATA>
+    <entry:GUEST_EMAIL_ID>firs1t@gmail.com</entry:GUEST_EMAIL_ID>
+    <entry:DATE_OF_CREATION>2013-06-04</entry:DATE_OF_CREATION>
+    <entry:LAST_MODIFICATION_DATE>2013-06-04</entry:LAST_MODIFICATION_DATE>
+    <entry:keywords>
+       	<k:keyword>Into</k:keyword>
+    	<k:keyword>The</k:keyword>
+    	<k:keyword>Entry</k:keyword>
+    	<k:keyword>first1@gmail.com</k:keyword>
+    </entry:keywords>
+  </gb:entry>
+   <gb:entry>
+    <entry:BOOK_ID>2</entry:BOOK_ID>
+    <entry:AUTHOR_TITLE>WscSecond</entry:AUTHOR_TITLE>
+    <entry:AUTHOR_NAME>testtwotwo</entry:AUTHOR_NAME>
+    <entry:BOOK_DATA>Second Entry Into The Wsc Book</entry:BOOK_DATA>
+    <entry:GUEST_EMAIL_ID>second2@gmail.com</entry:GUEST_EMAIL_ID>
+    <entry:DATE_OF_CREATION>2013-06-04</entry:DATE_OF_CREATION>
+    <entry:LAST_MODIFICATION_DATE>2013-06-04</entry:LAST_MODIFICATION_DATE>
+    <entry:keywords>
+    	<k:keyword>Second</k:keyword>
+    	<k:keyword>Wsc</k:keyword>
+    	<k:keyword>second2@gmail.com</k:keyword>
+    </entry:keywords>
+  </gb:entry>
+   <gb:entry>
+    <entry:BOOK_ID>3</entry:BOOK_ID>
+    <entry:AUTHOR_TITLE>WscThird</entry:AUTHOR_TITLE>
+    <entry:AUTHOR_NAME>testthreethree</entry:AUTHOR_NAME>
+    <entry:BOOK_DATA>Third Entry Into The Wsc Book</entry:BOOK_DATA>
+    <entry:GUEST_EMAIL_ID>third3@gmail.com</entry:GUEST_EMAIL_ID>
+    <entry:DATE_OF_CREATION>2013-06-04</entry:DATE_OF_CREATION>
+    <entry:LAST_MODIFICATION_DATE>2013-06-04</entry:LAST_MODIFICATION_DATE>
+    <entry:keywords>
+   		<k:keyword>Third</k:keyword>
+    	<k:keyword>Book</k:keyword>
+    	<k:keyword>third3@gmail.com</k:keyword>
+    </entry:keywords>
+  </gb:entry>
+</gb:guestbook>

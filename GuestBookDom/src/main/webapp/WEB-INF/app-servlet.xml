@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+    <import resource="spring-dao-config.xml" />
+    
+    <!-- Controller beans definition -->
+    <bean id="guestBookController" class="de.tum.in.dss.controller.GuestBookController" >
+		
+		<property name="guestBookDao">
+    		<ref bean="guestBookDao" />
+    	</property>
+    	
+    </bean>
+    
+    <bean id="createGuestBookController" class="de.tum.in.dss.controller.CreateGuestBookController">
+		<property name="validator">
+    		<bean class="de.tum.in.dss.validator.GuestBookValidator" />
+    	</property>
+    	<property name="guestBookDao">
+    		<ref bean="guestBookDao" />
+    	</property>
+    </bean>
+	
+	 <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+        	<props>
+			   <prop key="/guestbookhome.app">guestBookController</prop>
+			   <prop key="/searchkeyword.app">guestBookController</prop>
+			    <prop key="/createguestbook.app">createGuestBookController</prop>
+			</props>
+        </property>
+     </bean>
+     
+     <!-- <bean id="guestBookMethodNameResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/searchkeyword.app">getKeywords</prop>
+			</props>
+		</property>
+	</bean> -->
+     <!-- Register the guestbook.properties -->
+	  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="guestbook" />
+	  </bean>
+    
+    <!-- View configuration for JSPs defined inside WEB-INF -->
+     <bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations">
+	        <value>classpath:jdbc.properties</value>
+	    </property>
+	</bean>
+	
+</beans>

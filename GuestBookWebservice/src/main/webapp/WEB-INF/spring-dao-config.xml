@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="datasources-config.xml" />
+
+	<bean id="guestBookDao" class="de.tum.in.dss.dao.impl.GuestBookWebserviceDaoImpl">
+		<property name="guestBookService" ref="guestBookService"/>
+		<property name="modelConverterHelper" ref="modelConverterHelper"/>
+	</bean>
+	
+	
+
+	<bean id="guestBookXMLDao" class="de.tum.in.dss.dao.impl.GuestBookXMLDaoImpl">
+		<property name="documentBuilder" ref="documentBuilder" />
+		<property name="staxHelper" ref ="staxHelper"/>
+		<property name="domHelper" ref ="domHelper"/>
+		<property name="fileResource" value="classpath:xml/guestbook.xml"/>
+	</bean>
+	
+	<bean id="guestBookSQLDao" class="de.tum.in.dss.dao.impl.GuestBookDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
+	<bean id="documentBuilder" class="javax.xml.parsers.DocumentBuilder"
+		factory-bean="documentBuilderFactory" factory-method="newDocumentBuilder">
+	</bean>
+
+	<bean id="documentBuilderFactory" class="javax.xml.parsers.DocumentBuilderFactory"
+		factory-method="newInstance" singleton="true">
+		<property name="validating" value="false" />
+		<property name="ignoringElementContentWhitespace" value="true" />
+	</bean>
+	
+	<bean id="staxHelper" class="de.tum.in.dss.helper.StaxHelper">
+		<property name="xmlOutputFactory" ref ="xmlOutputFactory"/>
+		<property name="xmlInputFactory" ref ="xmlInputFactory"/>
+		<property name="xmlEventFactory" ref ="xmlEventFactory"/>
+		<property name="fileResource" value="classpath:xml/guestbook.xml"/>
+		<property name="xsdFileResource" value="classpath:xml/xsd/guestbook.xsd"/>
+	</bean>
+	
+	<bean id="domHelper" class="de.tum.in.dss.helper.DomHelper"/>
+		
+	
+	<bean id="transformerFactory" class="javax.xml.transform.TransformerFactory"
+		factory-method="newInstance"/>
+
+	
+	<bean id="xmlOutputFactory" class="javax.xml.stream.XMLOutputFactory"
+		factory-method="newInstance" singleton="true"/>
+		
+		<bean id="xmlEventFactory" class="javax.xml.stream.XMLEventFactory"
+		factory-method="newInstance" singleton="true"/>
+	
+	<bean id="xmlInputFactory" class="javax.xml.stream.XMLInputFactory"
+		factory-method="newInstance" singleton="true"/>
+	
+	<bean id="transformer" class="javax.xml.transform.Transformer"
+		factory-bean="transformerFactory" factory-method="newTransformer"/>
+ 	
+ 	<bean id="xpathAnalyzer" class="de.tum.in.dss.helper.XpathAnalyzer">
+ 		<property name="documentBuilder" ref="documentBuilder" />
+ 		<property name="domHelper" ref ="domHelper"/>
+ 		<property name="xPath" ref ="xPath"/>
+ 	</bean>
+ 	
+ 	<bean id="xPath" class="javax.xml.xpath.XPathFactory"
+		factory-bean="xPathFactory" factory-method="newXPath" />
+ 	
+ 	<bean id="xPathFactory" class="javax.xml.xpath.XPathFactory"
+		factory-method="newInstance" singleton="true"/>
+</beans>

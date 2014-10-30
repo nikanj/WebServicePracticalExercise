@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+        <bean id="helper" class="de.tum.in.dss.helper.WebserviceHelper">
+	        <property name="testFileResourceList">
+				<list>
+					<value type="org.springframework.core.io.ClassPathResource">classpath:testdata/testdata1.txt</value>
+					<value type="org.springframework.core.io.ClassPathResource">classpath:testdata/testdata2.txt</value>
+					<value type="org.springframework.core.io.ClassPathResource">classpath:testdata/testdata3.txt</value>
+					<value type="org.springframework.core.io.ClassPathResource">classpath:testdata/testdata4.txt</value>
+					<value type="org.springframework.core.io.ClassPathResource">classpath:testdata/testdata5.txt</value>
+				</list>
+			</property>
+		</bean>
+        
+        <bean id="modelConverterHelper" class="de.tum.in.dss.helper.ModelConverterHelper" singleton="true"/>
+</beans>

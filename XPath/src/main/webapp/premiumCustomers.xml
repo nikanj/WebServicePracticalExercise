@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Kunden>
+	<Kunde nachname="Schmidt" vorname="Helmut" geschlecht="M" geburtsjahr="1972">
+		<KundenNr>1234567890</KundenNr>
+		<Anschrift>
+			<PLZ>86161</PLZ>
+			<Ort>Augsburg</Ort>
+		</Anschrift>
+		<Hobbies>Lesen Foto Reisen</Hobbies>
+	</Kunde>
+	<Kunde nachname="Schmidt" vorname="Helmut" geschlecht="M" geburtsjahr="1942">
+		<KundenNr>0987654321</KundenNr>
+		<Anschrift>
+			<PLZ>48123</PLZ>
+			<Ort>Muenster</Ort>
+		</Anschrift>
+		<Hobbies>Foto Tennis</Hobbies>
+	</Kunde>
+	<Kunde nachname="Schmidt" vorname="Ilona" geschlecht="W" geburtsjahr="1945">
+		<KundenNr>2345676543</KundenNr>
+		<Anschrift>
+			<PLZ>86123</PLZ>
+			<Ort>Augsburg</Ort>
+		</Anschrift>
+		<Hobbies>Konzert</Hobbies>
+	</Kunde>
+	<Kunde nachname="Korn" vorname="Joachim" geschlecht="M" geburtsjahr="1972">
+		<KundenNr>1111111111</KundenNr>
+		<Anschrift>
+			<PLZ>48234</PLZ>
+			<Ort>Muenster</Ort>
+		</Anschrift>
+		<Hobbies>Reisen</Hobbies>
+	</Kunde>
+	<Kunde nachname="Huber" vorname="Philipp" geschlecht="M" geburtsjahr="1949">
+		<KundenNr>777777777</KundenNr>
+		<Anschrift>
+			<PLZ>86454</PLZ>
+			<Ort>Augsburg</Ort>
+		</Anschrift>
+		<Hobbies>Golf Ski Konzert</Hobbies>
+	</Kunde>
+</Kunden>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:k="http://dss.in.tum.de/keyword" xmlns:tns="http://dss.in.tum.de/guestbooktype" targetNamespace="http://dss.in.tum.de/guestbooktype" elementFormDefault="qualified">
+<xs:import schemaLocation="keyword.xsd" namespace="http://dss.in.tum.de/keyword"/>
+<xs:complexType name="guestbooktype">
+		<xs:sequence>
+			<xs:element name="BOOK_ID" type="xs:int"/>
+			<xs:element name="AUTHOR_TITLE">
+				<xs:simpleType>
+				    <xs:restriction base="xs:string">
+				      <xs:minLength value="5"/>
+				      <xs:maxLength value="40"/>
+				      <xs:pattern value="[a-zA-Z0-9\\s]+"/>
+				    </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AUTHOR_NAME">
+				<xs:simpleType>
+				    <xs:restriction base="xs:string">
+				      <xs:minLength value="10"/>
+				      <xs:maxLength value="30"/>
+				       <xs:pattern value="[a-zA-Z0-9\\s]+"/>
+				    </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BOOK_DATA">
+				<xs:simpleType>
+				    <xs:restriction base="xs:string">
+				      <xs:minLength value="3"/>
+				      <xs:maxLength value="500"/>
+				    </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" name="GUEST_EMAIL_ID">
+				<xs:simpleType>
+				    <xs:restriction base="xs:string">
+				      <xs:pattern value="[_A-Za-z0-9\-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9\-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})"/>
+				    </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DATE_OF_CREATION" type="xs:date" />
+			<xs:element name="LAST_MODIFICATION_DATE" type="xs:date" />
+			<xs:element name="keywords" type="k:keywords" minOccurs="0"/>
+		</xs:sequence>
+</xs:complexType>
+	
+
+</xs:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="beanContext.xml" />
+	<import resource="spring-dao-config.xml" />
+	
+	<bean id="guestBookServiceImpl" class="de.tum.in.dss.webservice.impl.GuestbookWebServiceImpl">
+		<property name="helper" ref="helper"/>
+		<property name="modelConverterHelper" ref="modelConverterHelper"/>
+		<!--<property name="guestBookDao" ref="guestBookXMLDao"/>-->
+		 <property name="guestBookDao" ref="guestBookSQLDao"/>
+	</bean>
+	
+	<!-- <bean id="guestBookServiceBean" class="de.tum.in.dss.guestbook_wsdl.GuestbookPortTypeImpl" /> -->
+	
+	<jaxws:endpoint xmlns:tns="http://dss.in.tum.de/guestbook/wsdl"
+		id="guestbookservice" implementor="#guestBookServiceImpl"
+		wsdlLocation="classpath:guestbook.wsdl" endpointName="tns:GuestBookServiceStarter"
+		serviceName="tns:GuestBookServiceLocator" address="/guestbook_service">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+
+	<bean id="guestBookService" class="de.tum.in.dss.guestbook.wsdl.GuestBookService"
+		factory-bean="clientFactory" factory-method="create" />
+
+	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="de.tum.in.dss.guestbook.wsdl.GuestBookService" />
+		<property name="address" value="http://localhost:8080/GuestBookWebservice/services/guestbook_service" />
+	</bean>
+	
+</beans>

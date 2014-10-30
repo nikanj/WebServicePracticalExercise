@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="guestbookservice" 
+targetNamespace="http://dss.in.tum.de/guestbook/wsdl" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:tns="http://dss.in.tum.de/guestbook/wsdl"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:gbxsd="http://dss.in.tum.de/guestbook"
+xmlns:gbtxsd="http://dss.in.tum.de/guestbooktype"
+xmlns:keyxsd="http://dss.in.tum.de/keyword"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    			xmlns:tns="http://dss.in.tum.de/guestbook/wsdl" 
+    			xmlns:gbxsd="http://dss.in.tum.de/guestbook"
+    			xmlns:gbtxsd="http://dss.in.tum.de/guestbooktype"
+    			xmlns:keyxsd="http://dss.in.tum.de/keyword"
+    			attributeFormDefault="unqualified"
+				elementFormDefault="qualified"
+				targetNamespace="http://dss.in.tum.de/guestbook/wsdl">
+				
+  		<xsd:import namespace="http://dss.in.tum.de/guestbook" schemaLocation="xsd/guestbook.xsd"/>
+  		<xsd:import namespace="http://dss.in.tum.de/guestbooktype" schemaLocation="xsd/guestbooktype.xsd"/>
+	    <xsd:import namespace="http://dss.in.tum.de/keyword" schemaLocation="xsd/keyword.xsd"/>
+		
+		<xsd:element name="guestBookId" type="xsd:int" />
+		<xsd:element name="resultcount1" type="xsd:int" />
+		<xsd:element name="resultcount2" type="xsd:int" />
+		<xsd:element name="resultcount3" type="xsd:int" />
+		<xsd:element name="resultcount4" type="xsd:int" />
+		<xsd:element name="guestBooktype" type="gbtxsd:guestbooktype" />
+		<xsd:element name="guestBooktype1" type="gbtxsd:guestbooktype" />
+		<xsd:element name="guestBooktype2" type="gbtxsd:guestbooktype" />
+		<xsd:element name="guestBooktype3" type="gbtxsd:guestbooktype" />
+		<xsd:element name="keywords1" type="keyxsd:keywords" />
+		<xsd:element name="keywords2" type="keyxsd:keywords" />
+		<xsd:element name="keywords3" type="keyxsd:keywords" />
+		<xsd:element name="keywords4" type="keyxsd:keywords" />
+  	</xsd:schema>
+
+  </wsdl:types>
+ 
+ 
+  <wsdl:message name="request1MsgInput">
+  </wsdl:message>
+  <wsdl:message name="request1MsgOutput">
+    <wsdl:part name="request1PartOutput" element="gbxsd:guestbook"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request2MsgInput">
+    <wsdl:part name="request2PartInput" element="tns:guestBookId"/>
+  </wsdl:message>
+  <wsdl:message name="request2MsgOutput">
+    <wsdl:part name="request2PartOutput" element="tns:guestBooktype"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request3MsgInput">
+    <wsdl:part name="request3PartInput" element="tns:keywords1"/>
+  </wsdl:message>
+  <wsdl:message name="request3MsgOutput">
+    <wsdl:part name="request3PartOutput" element="gbxsd:guestbook"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request4MsgInput">
+  	<wsdl:part name="request4PartInput" element="tns:keywords2"/>
+  </wsdl:message>
+  <wsdl:message name="request4MsgOutput">
+    <wsdl:part name="request4PartOutput" element="gbxsd:guestbook"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request5MsgInput">
+    <wsdl:part name="request5PartInput" element="tns:keywords3"/>
+  </wsdl:message>
+  <wsdl:message name="request5MsgOutput">
+    <wsdl:part name="request5PartOutput" element="tns:keywords4"/>
+  </wsdl:message>
+
+  <wsdl:message name="request6MsgInput">
+    <wsdl:part name="request6PartInput" element="gbxsd:guestbook"/>
+  </wsdl:message>
+  <wsdl:message name="request6MsgOutput">
+    <wsdl:part name="request6PartOutput" element="tns:resultcount1"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request7MsgInput">
+    <wsdl:part name="request7PartInput" element="tns:guestBooktype1"/>
+  </wsdl:message>
+  <wsdl:message name="request7MsgOutput">
+    <wsdl:part name="request7PartOutput" element="tns:resultcount2"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request8MsgInput">
+    <wsdl:part name="request8PartInput" element="tns:guestBooktype2"/>
+  </wsdl:message>
+  <wsdl:message name="request8MsgOutput">
+    <wsdl:part name="request8PartOutput" element="tns:resultcount3"/>
+  </wsdl:message>
+  
+  <wsdl:message name="request9MsgInput">
+    <wsdl:part name="request9PartInput" element="tns:guestBooktype3"/>
+  </wsdl:message>
+  <wsdl:message name="request9MsgOutput">
+    <wsdl:part name="request9PartOutput" element="tns:resultcount4"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="GuestBookService">
+    <wsdl:operation name="retrieveAllGuestBooks">
+	      <wsdl:input message="tns:request1MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request1MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+   
+    <wsdl:operation name="retrieveGuestBookByGuestBookId">
+	      <wsdl:input message="tns:request2MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request2MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="retrieveGuestBookListByKeywordsInText">
+	      <wsdl:input message="tns:request3MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request3MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+	<wsdl:operation name="retrieveGuestBookListByKeywords">
+	      <wsdl:input message="tns:request4MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request4MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="retrieveGuestBookKeywords">
+	      <wsdl:input message="tns:request5MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request5MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="addGuestBookEntries">
+	      <wsdl:input message="tns:request6MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request6MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="createGuestBookEntry">
+	      <wsdl:input message="tns:request7MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request7MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="updateGuestBookEntry">
+	      <wsdl:input message="tns:request8MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request8MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="deleteGuestBook">
+	      <wsdl:input message="tns:request9MsgInput">
+	      </wsdl:input>
+	      <wsdl:output message="tns:request9MsgOutput">
+	      </wsdl:output>
+    </wsdl:operation>
+    
+  </wsdl:portType>
+  
+  <wsdl:binding name="GuestBookServiceBinding" type="tns:GuestBookService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    
+    <wsdl:operation name="retrieveAllGuestBooks">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/retrieveAllGuestBooks"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="request1PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="retrieveGuestBookByGuestBookId">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/retrieveGuestBookByGuestBookId"/>
+      <wsdl:input>
+        <soap:body parts="request2PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="request2PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="retrieveGuestBookListByKeywordsInText">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/retrieveGuestBookListByKeywordsInText"/>
+      <wsdl:input>
+        <soap:body parts="request3PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="request3PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+	<wsdl:operation name="retrieveGuestBookListByKeywords">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/retrieveGuestBookListByKeywords"/>
+     <wsdl:input>
+         <soap:body parts="request4PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="request4PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation> 
+    
+    <wsdl:operation name="retrieveGuestBookKeywords">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/retrieveGuestBookKeywords"/>
+      <wsdl:input>
+        <soap:body parts="request5PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+          <soap:body parts="request5PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="addGuestBookEntries">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/addGuestBookEntries"/>
+      <wsdl:input>
+         <soap:body parts="request6PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body parts="request6PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="createGuestBookEntry">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/createGuestBookEntry"/>
+      <wsdl:input>
+          <soap:body parts="request7PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body parts="request7PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="updateGuestBookEntry">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/updateGuestBookEntry"/>
+      <wsdl:input>
+          <soap:body parts="request8PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+         <soap:body parts="request8PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="deleteGuestBook">
+      <soap:operation soapAction="http://dss.in.tum.de/guestbook/wsdl/deleteGuestBook"/>
+      <wsdl:input>
+          <soap:body parts="request9PartInput" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="request9PartOutput" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+  </wsdl:binding>
+  
+  <wsdl:service name="GuestBookServiceLocator">
+    <wsdl:port name="GuestBookServiceStarter" binding="tns:GuestBookServiceBinding">
+      <soap:address location="http://wsc10:8080/GuestBookWebservice/services/guestbook_service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

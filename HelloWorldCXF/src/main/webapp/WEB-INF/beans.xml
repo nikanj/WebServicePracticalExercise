@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     http://www.springframework.org/schema/beans/spring-beans.xsd    http://cxf.apache.org/jaxws   http://cxf.apache.org/schemas/jaxws.xsd  http://cxf.apache.org/transports/http/configuration  http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+
+	<bean id="helloservicebean" class="de.tum.in.dss.service.impl.HelloWorldService" />
+
+	<jaxws:endpoint id="helloWorld" implementor="#helloservicebean"
+		address="/helloWorld" />
+
+
+
+	<bean id="helloClient" class="de.tum.in.dss.service.HelloWorld"
+		factory-bean="clientFactory" factory-method="create" />
+
+	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="de.tum.in.dss.service.HelloWorld" />
+		<property name="address"
+			value="http://localhost:8080/HelloWorldCXF/services/helloWorld" />
+	</bean>
+</beans>

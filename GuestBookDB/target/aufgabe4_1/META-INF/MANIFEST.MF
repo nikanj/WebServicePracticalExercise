@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_10-beta
+Built-By: nikanj
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+

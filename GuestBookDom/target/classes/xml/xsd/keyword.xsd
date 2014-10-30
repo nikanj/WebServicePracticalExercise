@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dss.in.tum.de/keyword" xmlns:tns="http://dss.in.tum.de/keyword" elementFormDefault="qualified">
+<xs:complexType name="keywords">
+	<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="unbounded" name="keyword">
+				<xs:simpleType>
+				    <xs:restriction base="xs:string">
+				      <xs:pattern value="[a-zA-Z0-9@-_\\.\s]+(\s[a-zA-Z0-9@-_\\.\\s]+)*"/>
+				    </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+	</xs:sequence>
+</xs:complexType>
+</xs:schema>
